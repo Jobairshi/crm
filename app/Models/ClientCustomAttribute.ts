@@ -1,31 +1,31 @@
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 import User from './User'
-import School from './School'
+import Client from './Client'
 
-export default class CustomAttribute extends BaseModel {
+import School from './School'
+import CustomAttribute from './CustomAtribute'
+
+export default class ClientCustomAttribute extends BaseModel {
+ serializeExtras = true;
+  
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public name: string
+  public value: string
 
-  @column()
-  public fieldType: 'text' | 'number' | 'single_select' | 'multi_select' | 'radio' | 'checkbox' | 'textarea'
-
-  @column()
-  public options: string
-
-  @column()
-  public description: string
-  @column()
-  public default_value: string
   @column()
   public userId: number
 
   @column()
-  public schoolId: number
+  public attributeId: number
 
+  @column()
+  public clientId: number
+
+  @column()
+  public schoolId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -35,6 +35,12 @@ export default class CustomAttribute extends BaseModel {
 
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>
+
+  @belongsTo(() => Client)
+  public client: BelongsTo<typeof Client>
+
+  @belongsTo(() => CustomAttribute)
+  public customAttribute: BelongsTo<typeof CustomAttribute>
 
   @belongsTo(() => School)
   public school: BelongsTo<typeof School>

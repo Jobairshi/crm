@@ -22,8 +22,11 @@
 import Route from '@ioc:Adonis/Core/Route'
 import 'App/Controllers/Http/School/school';
 import 'App/Controllers/Http/Products/products';
-
-
+import 'App/Controllers/Http/Client/Client';
+import 'App/Controllers/Http/Stages/Stages';
+import 'App/Controllers/Http/Pipeline/Pipeline';
+import 'App/Controllers/Http/Source/Source';
+import 'App/Controllers/Http/CustomAttribute/CustomAttribute'
 Route.get("/", () => {
   return { message: "You have landed in empty ocean!!!!... ❤️" };
 });
